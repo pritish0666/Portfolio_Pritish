@@ -1,0 +1,171 @@
+@import url('https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Light Theme Variables (Updated Aqua/Cyan Theme) */
+    --background: 180 50% 96%; /* Light Aqua/Cyan */
+    --foreground: 240 10% 3.9%; /* Dark Gray - Keep for readability */
+    --card: 180 30% 99%; /* Very Light Aqua/Cyan for Cards */
+    --card-foreground: 240 10% 3.9%;
+    --popover: 180 30% 99%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 270 25% 50%; /* Mid Purple - Keep for contrast */
+    --primary-foreground: 0 0% 98%; /* Almost White */
+    --secondary: 180 20% 92%; /* Lighter Aqua/Cyan for Secondary */
+    --secondary-foreground: 270 25% 30%; /* Darker Purple - Keep */
+    --muted: 180 20% 92%;
+    --muted-foreground: 240 5% 64.9%; /* Gray */
+    --accent: 300 50% 60%; /* Lighter Pink - Keep Accent */
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 20% 88%; /* Light Aqua/Cyan Border */
+    --input: 180 20% 90%; /* Light Aqua/Cyan Input */
+    --ring: 270 25% 50%; /* Mid Purple for Ring */
+    --chart-1: 250 70% 60%;
+    --chart-2: 300 60% 55%;
+    --chart-3: 330 80% 65%;
+    --chart-4: 280 65% 70%;
+    --chart-5: 310 75% 65%;
+    --radius: 0.75rem;
+    --sidebar-background: 180 40% 98%; /* Very Light Aqua for Sidebar */
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 280 76% 55%; /* Primary Purple for Sidebar */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 20% 92%;
+    --sidebar-accent-foreground: 240 10% 3.9%;
+    --sidebar-border: 180 20% 88%;
+    --sidebar-ring: 280 91% 65%;
+  }
+
+  .dark {
+     /* Dark Theme Variables (Original Purple) */
+    --background: 270 20% 10%; /* Dark purple */
+    --foreground: 270 10% 90%; /* Light purple */
+    --card: 270 15% 15%;
+    --card-foreground: 270 10% 98%;
+    --popover: 270 15% 15%;
+    --popover-foreground: 270 10% 98%;
+    --primary: 270 25% 50%; /* Adjusted primary for dark mode consistency */
+    --primary-foreground: 270 10% 98%;
+    --secondary: 270 20% 20%;
+    --secondary-foreground: 270 10% 98%;
+    --muted: 270 20% 20%;
+    --muted-foreground: 270 10% 64%;
+    --accent: 300 50% 50%; /* Pink accent */
+    --accent-foreground: 270 10% 98%;
+    --destructive: 0 63% 41%;
+    --destructive-foreground: 270 10% 98%;
+    --border: 270 20% 20%;
+    --input: 270 20% 20%;
+    --ring: 300 50% 50%;
+    --chart-1: 250 70% 50%;
+    --chart-2: 300 60% 45%;
+    --chart-3: 330 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 310 75% 55%;
+    --sidebar-background: 270 10% 12%;
+    --sidebar-foreground: 270 10% 90%;
+    --sidebar-primary: 280 76% 48%;
+    --sidebar-primary-foreground: 270 10% 100%;
+    --sidebar-accent: 270 20% 20%;
+    --sidebar-accent-foreground: 270 10% 90%;
+    --sidebar-border: 270 20% 20%;
+    --sidebar-ring: 280 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased /* Added antialiased */
+  }
+}
+
+.card-shadow {
+  /* Subtle shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-shadow:hover {
+  /* Slightly stronger shadow on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Improve button hover state */
+.btn-hover-effect {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn-hover-effect:hover {
+  transform: translateY(-2px);
+  /* Use theme colors for shadow if desired, example: */
+  /* box-shadow: 0 4px 10px hsl(var(--primary) / 0.3); */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Improve typography */
+.text-pretty {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Highlight active navigation link */
+.nav-active {
+  /* font-weight: 600; */
+  /* text-decoration: underline; */
+  /* text-underline-offset: 4px; */
+    @apply font-semibold bg-accent/80 text-accent-foreground; /* Slightly transparent accent */
+}
+
+@layer utilities {
+  .container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  /* Add a subtle background pattern or texture */
+  .bg-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+
+  /* Custom animation for text reveal */
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .animate-slide-in-left {
+    animation: slide-in-left 0.5s ease-out forwards;
+  }
+}
+
+/* Animated gradient */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+}
